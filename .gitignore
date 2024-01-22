@@ -32,3 +32,6 @@
 *.out
 *.app
 run_csa
+
+# Misc
+.DS_Store
