@@ -1,13 +1,16 @@
-BOOST = /usr/local/Cellar/boost/1.66.0  # for unit tests only
+# brew install llvm libomp
 
-CXX      = /usr/local/opt/llvm/bin/clang++
-CXXFLAGS = -Wall -pedantic -O3 -fopenmp -I ./include
-LDFLAGS  = -L /usr/local/opt/llvm/lib
+CC = /opt/homebrew/opt/llvm/bin/clang
+CXX = /opt/homebrew/opt/llvm/bin/clang++
+
+CPPFLAGS += -Wall -pedantic -O3 -Iinclude
+CPPFLAGS += -fopenmp=libomp -I/opt/homebrew/opt/libomp/include
+LDFLAGS += -L/opt/homebrew/opt/libomp/lib
 
 SRCS := example.cpp $(wildcard include/*.hpp include/*/*.hpp)
 
 run_csa : $(SRCS)
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) example.cpp -o $@
+	$(CXX) $(CPPFLAGS) $(LDFLAGS) example.cpp -o $@
 
 .PHONY : docs
 docs :

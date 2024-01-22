@@ -223,7 +223,7 @@ public:
         omp_lock_t lock;
         omp_init_lock(&lock);
 
-        #pragma omp parallel shared(n, shared_states, tacc, tgen, gamma) num_threads(this->m) default(none)
+        #pragma omp parallel shared(n, shared_states, tacc, tgen, gamma) num_threads(this->m)
         {
             int k, opt_id = omp_get_thread_num();
 
